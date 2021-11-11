@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CursoCSharp {
-    public class CentralDeExercicios {
+namespace CursoCSharp
+{
+    public class CentralDeExercicios
+    {
         Dictionary<string, Action> Exercicios;
 
-        public CentralDeExercicios(Dictionary<string, Action> exercicios) {
-            Exercicios = exercicios;    
+        public CentralDeExercicios(Dictionary<string, Action> exercicios)
+        {
+            Exercicios = exercicios;
         }
 
-        public void SelecionarEExecutar() {
+        public void SelecionarEExecutar()
+        {
             int i = 1;
 
-            foreach (var exercicio in Exercicios) {
+            foreach (var exercicio in Exercicios)
+            {
                 Console.WriteLine("{0}) {1}", i, exercicio.Key);
                 i++;
             }
@@ -27,18 +32,24 @@ namespace CursoCSharp {
             string nomeDoExercicio = Exercicios.ElementAt(num).Key;
 
             Console.Write("\nExecutando exercício ");
-            Console.BackgroundColor = ConsoleColor.Yellow;
-            Console.ForegroundColor = ConsoleColor.Black;
+            // Console.BackgroundColor = ConsoleColor.DarkBlue;
+            // Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine(nomeDoExercicio);
-            Console.ResetColor();
+            // 
 
-            Console.WriteLine(String.Concat(
-                Enumerable.Repeat("=", nomeDoExercicio.Length + 21)) + "\n");
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.Write(String.Concat(Enumerable.Repeat("=", nomeDoExercicio.Length + 21)));
+            Console.ResetColor();
+            System.Console.WriteLine('\n');
+
 
             Action executar = Exercicios.ElementAt(num).Value;
-            try {
+            try
+            {
                 executar();
-            } catch(Exception e) {
+            }
+            catch (Exception e)
+            {
                 Console.BackgroundColor = ConsoleColor.Red;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Ocorreu um erro: {0}", e.Message);
